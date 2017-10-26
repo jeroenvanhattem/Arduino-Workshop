@@ -76,7 +76,7 @@ void switch_colors() {
 
 void drive(int command) {
   // Forward
-  if(results.value == 4278255360){
+  if(results.value == 66911235){
     digitalWrite(motorA1, HIGH);
     digitalWrite(motorB1, HIGH);
     digitalWrite(motorA2, LOW);

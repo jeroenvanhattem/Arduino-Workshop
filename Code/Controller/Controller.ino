@@ -44,13 +44,13 @@ void loop() {
     Serial.print("Sending joystick button\n");
   }
 
-  if(x_value < 4) {
+  if(x_value > 6) {
     // Forward
     // 00000011 11111100 11111100 00000011
     send_data(66911235);
     Serial.print("Sending Forward\n");
   }
-  else if(x_value > 6) {
+  else if(x_value < 4) {
     // Backwards
     // 00000011 11111100 00000011 11111100
     send_data(66847740);
