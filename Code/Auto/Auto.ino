@@ -1,7 +1,10 @@
 #include <IRremote.h>
+#include <IRremoteInt.h>
 
-const int motorA = 2;
-const int motorB = 3;
+const int motorA1 = 2;
+const int motorA2 = 3;
+const int motorB1 = 4;
+const int motorB2 = 5;
 const int RECV_PIN = 7;
 const int rgb_red = 11;
 const int rgb_green = 12;
@@ -13,15 +16,19 @@ IRrecv irrecv(RECV_PIN);
 decode_results results;
 
 
-void setup()
-{
+void setup() {
   Serial.begin(9600);
   
-  pinMode(motorA, OUTPUT); 
-  pinMode(motorB, OUTPUT); 
-  pinMode(rgb_red, OUTPUT); 
-  pinMode(rgb_green, OUTPUT); 
-  pinMode(rgb_blue, OUTPUT); 
+  pinMode(motorA1, OUTPUT); 
+  pinMode(motorB1, OUTPUT); 
+  pinMode(motorA2, OUTPUT); 
+  pinMode(motorB2, OUTPUT); 
+    
+    pinMode(rgb_red, OUTPUT); 
+    pinMode(rgb_green, OUTPUT); 
+    pinMode(rgb_blue, OUTPUT); 
+  
+  pinMode(RECV_PIN, INPUT);
   irrecv.enableIRIn(); // Start the receiver
 }
 
@@ -67,51 +74,70 @@ void switch_colors() {
   }
 }
 
-void loop()
-{
-  //Even wachten, zodat je niet 5 IR-codes binnen 1 seconde krijgt.
-//  delay(500);
-  
-//  switch_colors();
-  
+void drive(int command) {
+  // Vooruit
+  if(results.value == 4278255360){
+    digitalWrite(motorA1, HIGH);
+    digitalWrite(motorB1, HIGH);
+    digitalWrite(motorA2, LOW);
+    digitalWrite(motorB2, LOW);
+    Serial.println("Forward");
+  }
+  // Achteruit
+  else if(results.value == 30){
+    digitalWrite(motorA1, LOW);
+    digitalWrite(motorB1, LOW);
+    digitalWrite(motorA2, HIGH);
+    digitalWrite(motorB2, HIGH);
+  }
+  // Stop
+  else if(results.value == 0x00){
+    digitalWrite(motorA1, LOW);
+    digitalWrite(motorB1, LOW);
+    digitalWrite(motorA2, LOW);
+    digitalWrite(motorB2, LOW);
+  }
+  // Links
+  if(results.value == 144){
+    digitalWrite(motorA1, LOW);
+    digitalWrite(motorB1, HIGH);
+    digitalWrite(motorA2, HIGH);
+    digitalWrite(motorB2, LOW);
+  }
+  // Rechts
+  else if(results.value == 2192){
+    digitalWrite(motorA1, HIGH);
+    digitalWrite(motorB1, LOW);
+    digitalWrite(motorA2, LOW);
+    digitalWrite(motorB2, HIGH);
+  }
+  // Verander kleuren
+  else if(results.value == 66849015) {
+    switch_colors();
+    Serial.println("Switching colors!");
+  }
+}
+
+int receive_infrared() {
   // Ontvangen van IR signaal
   if (irrecv.decode(&results)) {
-    Serial.println(results.value, HEX);
+    Serial.println("VALUE");
+    Serial.println(results.value);
     irrecv.resume(); // Receive the next value
   }
 
-  Serial.println("Value: ");
-  Serial.println(results.value);
+  return results.value;
+}
+
+void loop() {
+  //Even wachten, zodat je niet 5 IR-codes binnen 1 seconde krijgt.
+  delay(500);
   
-  // Groepen
-  //Toets Prog Up -> Vooruit
-  if(results.value == 0xFF){
-    digitalWrite(motorA, HIGH);
-    digitalWrite(motorB, HIGH);
-  }
-  //Toets Prog Down -> Stop
-  else if(results.value == 0x00){
-    digitalWrite(motorA, LOW);
-    digitalWrite(motorB, LOW);
-  }
-  //Toets Vol Up -> Links
-  if(results.value == 144){
-    digitalWrite(motorA, LOW);
-    digitalWrite(motorB, HIGH);
-  }
-  //Toets Vol Down -> Rechts
-  else if(results.value == 2192){
-    digitalWrite(motorA, HIGH);
-    digitalWrite(motorB, LOW);
-  }
+//  Serial.println(results.value, HEX);
+  // Hier roepen we de drive() functie aan, we geven de waarde mee, dit maakt alles een stuk overzichtelijker.
+  drive(receive_infrared());
   
-  // Toets 0 -> LCD legen
-  else if(results.value == 2320){
-  
-  }  
- 
- results.value = 0;
- 
-       
+  results.value = 0;
+   
 }
 
