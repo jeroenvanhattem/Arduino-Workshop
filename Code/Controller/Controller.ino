@@ -40,13 +40,41 @@ void loop() {
   y_value = convert_value(analogRead(joystick_y));
    
   if(!digitalRead(joystick_button)) {
-    
-//    send_data(66849015);
+    send_data(66849015);
     Serial.print("Sending joystick button\n");
   }
 
-  if(x_value < 5) {
-    send_data(
+  if(x_value < 4) {
+    // Forward
+    // 00000011 11111100 11111100 00000011
+    send_data(66911235);
+    Serial.print("Sending Forward\n");
+  }
+  else if(x_value > 6) {
+    // Backwards
+    // 00000011 11111100 00000011 11111100
+    send_data(66847740);
+    Serial.print("Sending Backwards\n");
+  }
+  
+  if(y_value < 4) {
+    // Left
+    // 00000011 11111100 00110000 11001111
+    send_data(66859215);
+    Serial.print("Sending Left\n");
+  }
+  else if(y_value > 6) {
+    // Right
+    // 00000011 11111100 00001100 11110011
+    send_data(66850035);
+    Serial.print("Sending Right\n");
+  }
+ 
+  if ((x_value > 4 && x_value < 6) && (y_value > 4 && y_value < 6)) {
+    // Don't move
+    // 00000011 11111100 00000000 11111111
+    send_data(66846975);
+    Serial.print("Sending Don't move\n");
   }
 //  for (int i = 0; i < 3; i++) {
 //    irsend.sendNEC(0xFF00FF00, 32);

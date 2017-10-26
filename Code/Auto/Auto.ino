@@ -75,7 +75,7 @@ void switch_colors() {
 }
 
 void drive(int command) {
-  // Vooruit
+  // Forward
   if(results.value == 4278255360){
     digitalWrite(motorA1, HIGH);
     digitalWrite(motorB1, HIGH);
@@ -83,35 +83,39 @@ void drive(int command) {
     digitalWrite(motorB2, LOW);
     Serial.println("Forward");
   }
-  // Achteruit
-  else if(results.value == 30){
+  // Backw
+  else if(results.value == 66847740){
     digitalWrite(motorA1, LOW);
     digitalWrite(motorB1, LOW);
     digitalWrite(motorA2, HIGH);
     digitalWrite(motorB2, HIGH);
+    Serial.println("Backwards");
   }
-  // Stop
-  else if(results.value == 0x00){
-    digitalWrite(motorA1, LOW);
-    digitalWrite(motorB1, LOW);
-    digitalWrite(motorA2, LOW);
-    digitalWrite(motorB2, LOW);
-  }
-  // Links
-  if(results.value == 144){
+  // Left
+  else if(results.value == 66859215){
     digitalWrite(motorA1, LOW);
     digitalWrite(motorB1, HIGH);
     digitalWrite(motorA2, HIGH);
     digitalWrite(motorB2, LOW);
+    Serial.println("Left");
   }
-  // Rechts
-  else if(results.value == 2192){
+  // Right
+  else if(results.value == 66850035){
     digitalWrite(motorA1, HIGH);
     digitalWrite(motorB1, LOW);
     digitalWrite(motorA2, LOW);
     digitalWrite(motorB2, HIGH);
+    Serial.println("Right");
   }
-  // Verander kleuren
+  // Stop
+  else if(results.value == 66846975){
+    digitalWrite(motorA1, LOW);
+    digitalWrite(motorB1, LOW);
+    digitalWrite(motorA2, LOW);
+    digitalWrite(motorB2, LOW);
+    Serial.println("Stop");
+  }
+  // Switch colors
   else if(results.value == 66849015) {
     switch_colors();
     Serial.println("Switching colors!");
