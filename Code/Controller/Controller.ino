@@ -11,7 +11,6 @@ int y_value = 0;
 IRsend irsend;
 
 void setup() {
-  // put your setup code here, to run once:
   pinMode(joystick_x, INPUT);
   pinMode(joystick_y, INPUT);
   pinMode(joystick_button, INPUT);
@@ -25,16 +24,13 @@ int convert_value(int data) {
 }
 
 void send_data(long int data) {
-//    irsend.sendNEC(0xFF00FF00, 32);
     irsend.sendNEC(data, 32);
-//    Serial.println("Sending '00000011`11111100`11111111`00000000'");
     Serial.println("Sending");
     Serial.println(data);
     delay(40);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
   x_value = convert_value(analogRead(joystick_x));
   y_value = convert_value(analogRead(joystick_y));
