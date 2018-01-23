@@ -1,0 +1,20 @@
+Voor 1 auto:
+-	Arduino Uno. (https://nl.aliexpress.com/item/Free-shipping-10set-lot-UNO-R3-MEGA328P-with-usb-cable-for-Arduino-Compatible-Dropshipping/)
+-	Auto platform. (https://nl.aliexpress.com/item/1-pcs-New-Motor-Smart-Robot-Car-Chassis-Electronic-Manufacture-DIY-Kit-Speed-Encoder-Battery-Box/)
+-	L9110 H-Bridge (https://nl.aliexpress.com/item/H-bridge-Stepper-Motor-Dual-DC-Motor-Driver-Controller-Board-L9110S-For-Arduino/)
+-	Half breadboard en een paar kleintjes. (https://nl.aliexpress.com/item/1-stks-Kwaliteit-mini-broodplank-breadboard-8-5-CM-x-5-5-CM-400-gaten   /   https://nl.aliexpress.com/item/THGS-12-Packs-170-Punten-Mini-Klein-breadboard-voor-Arduino-Proto-Shield-6-kleuren/)
+-	Jumper Wires. (https://nl.aliexpress.com/item/Dupont-line-120pcs-20cm-male-to-male-male-to-female-and-female-to-female-jumper-wire/)
+-	2 RGB leds. (https://nl.aliexpress.com/item/50Pcs-5mm-4pin-RGB-Tri-Color-Common-Anode-LED-Red-Green-Blue/)
+-	3x 220 Ohm weerstand. (https://nl.aliexpress.com/item/600PCS-Component-Kit-1-1-4W-Resistor-Pack-Used-Colored-Ring-Resistance-10-ohms-1M-ohm/	beter teveel dan te weinig)
+-	Infrarood ontvanger. (https://nl.aliexpress.com/item/10pcs-Universal-IR-Infrared-Receiver-TL1838-VS1838B-1838-38Khz-wholesale/)
+-	Powerbank.
+
+Voor 1 controller 
+-	Arduino Uno. (https://nl.aliexpress.com/item/Free-shipping-10set-lot-UNO-R3-MEGA328P-with-usb-cable-for-Arduino-Compatible-Dropshipping/)
+-	Klein breadboard. (https://nl.aliexpress.com/item/THGS-12-Packs-170-Punten-Mini-Klein-breadboard-voor-Arduino-Proto-Shield-6-kleuren/)
+-	Joystick module. (https://nl.aliexpress.com/item/1pc-Free-Shipping-Higher-Quality-Dual-axis-XY-Joystick-Module-PS2-Joystick-Control-Lever-Sensor-For/)
+-	2 knopjes. (https://nl.aliexpress.com/item/25-STKS-12X12-MM-Grote-sleutel-module-Grote-knop-module-Licht-touch-schakelaar-module-met-hoed/)
+-	220 Ohm weerstand. (https://nl.aliexpress.com/item/600PCS-Component-Kit-1-1-4W-Resistor-Pack-Used-Colored-Ring-Resistance-10-ohms-1M-ohm/)
+-	Infrarood ledje. (https://nl.aliexpress.com/item/10PCS-Lot-940nm-IR-Infrared-Emission-Tube-5mm-Diode-New-Wholesale-Electronic/)
+-	Jumper Wires. (https://nl.aliexpress.com/item/Dupont-line-120pcs-20cm-male-to-male-male-to-female-and-female-to-female-jumper-wire/)
+-	Powerbank / andere stroomvoorziening zoals laptop.
